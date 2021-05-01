@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">  <item
+    android:drawable="@drawable/ocard_logo_02"
+    android:width="@dimen/sp_20"
+    android:height="@dimen/sp_10" />
+
+    <!--android:layout_marginStart="200dp"
+
+    android:layout_marginTop="20dp"
+    />
+    -->
+</layer-list>

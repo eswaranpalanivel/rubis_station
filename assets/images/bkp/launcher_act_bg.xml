@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item>
+        <shape android:shape="rectangle">
+            <!--           <solid android:drawable="@drawable/background_face" />-->
+            <!--      <solid android:color="@android:color/background_light" />-->
+            <!--            <solid android:color="@drawable/background_face" />-->
+
+            <!-- <gradient
+                 android:startColor="@color/primary"
+                 android:endColor="@color/primary_dark"
+                 android:angle="270"/>-->
+        </shape>
+    </item>
+    <item android:drawable="@drawable/background_face" />
+
+    <item android:state_pressed="false">
+        <bitmap
+            android:gravity="center"
+            android:scaleType="fitCenter"
+            android:src="@mipmap/ola_white_logo"
+
+            />
+
+        <!--            android:src="@mipmap/init_bg"-->
+        <!--            android:src="@mipmap/ola_white_logo" />-->
+
+
+    </item>
+
+
+</layer-list>
