@@ -40,7 +40,7 @@ class ReadRfid_Screen extends StatelessWidget {
 
             // margin: EdgeInsets.all(10),
             color: Colors.black,
-            width: _size.width*0.50,
+            width: _size.width*0.60,
             height: _size.height*0.10,
             child: ElevatedButton(
               onPressed: (){
