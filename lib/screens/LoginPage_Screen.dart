@@ -47,9 +47,15 @@ class LoginPage extends StatelessWidget {
               color: Colors.black,
               width: _size.width*0.30,
               height: _size.height*0.10,
-              child: HeaderElevated_Button( text: "Login", class_name : "UserSelection"
+              child: ElevatedButton(
+                onPressed: (){
+                  Navigator.of(context).pushNamed("/UserSelection", arguments: {});
+                },
+                child: Text("Login", style: TextStyle(color: Colors.white, fontSize: 20,  ),),
+                style: ElevatedButton.styleFrom(
+                  primary: MyColors.rubisred,
+                ),
 
-                // /child: Text("SALE", style: TextStyle(fontSize: 30,color: My),),
               ),
 
             ),
