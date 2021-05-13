@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:rubis_station/model/Colour.dart';
-import 'package:rubis_station/widget/Widget_Button.dart';
+import 'package:rubis_station/widgets/Widget_Button.dart';
 import 'package:rubis_station/screens/UserSelection_Screen.dart';
 
 
 class LoginPage extends StatelessWidget {
   @override
-  static const routeName = "/‰";
+  static const routeName = "/LoginPage";
   Widget build(BuildContext context) {
     Size _size = MediaQuery.of(context).size;
 
