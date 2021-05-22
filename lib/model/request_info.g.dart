@@ -28,7 +28,28 @@ class _$RequestInfoSerializer implements StructuredSerializer<RequestInfo> {
       serializers.serialize(object.version,
           specifiedType: const FullType(String)),
     ];
-
+    Object value;
+    value = object.operator;
+    if (value != null) {
+      result
+        ..add('Operator')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.operatorType;
+    if (value != null) {
+      result
+        ..add('OperatorType')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.cardNo;
+    if (value != null) {
+      result
+        ..add('CardNum')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
     return result;
   }
 
@@ -55,6 +76,18 @@ class _$RequestInfoSerializer implements StructuredSerializer<RequestInfo> {
           result.version = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
+        case 'Operator':
+          result.operator = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'OperatorType':
+          result.operatorType = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'CardNum':
+          result.cardNo = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
       }
     }
 
@@ -69,11 +102,23 @@ class _$RequestInfo extends RequestInfo {
   final String termSerialNum;
   @override
   final String version;
+  @override
+  final String operator;
+  @override
+  final String operatorType;
+  @override
+  final String cardNo;
 
   factory _$RequestInfo([void Function(RequestInfoBuilder) updates]) =>
       (new RequestInfoBuilder()..update(updates)).build();
 
-  _$RequestInfo._({this.requestType, this.termSerialNum, this.version})
+  _$RequestInfo._(
+      {this.requestType,
+      this.termSerialNum,
+      this.version,
+      this.operator,
+      this.operatorType,
+      this.cardNo})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         requestType, 'RequestInfo', 'requestType');
@@ -95,13 +140,22 @@ class _$RequestInfo extends RequestInfo {
     return other is RequestInfo &&
         requestType == other.requestType &&
         termSerialNum == other.termSerialNum &&
-        version == other.version;
+        version == other.version &&
+        operator == other.operator &&
+        operatorType == other.operatorType &&
+        cardNo == other.cardNo;
   }
 
   @override
   int get hashCode {
-    return $jf($jc($jc($jc(0, requestType.hashCode), termSerialNum.hashCode),
-        version.hashCode));
+    return $jf($jc(
+        $jc(
+            $jc(
+                $jc($jc($jc(0, requestType.hashCode), termSerialNum.hashCode),
+                    version.hashCode),
+                operator.hashCode),
+            operatorType.hashCode),
+        cardNo.hashCode));
   }
 
   @override
@@ -109,7 +163,10 @@ class _$RequestInfo extends RequestInfo {
     return (newBuiltValueToStringHelper('RequestInfo')
           ..add('requestType', requestType)
           ..add('termSerialNum', termSerialNum)
-          ..add('version', version))
+          ..add('version', version)
+          ..add('operator', operator)
+          ..add('operatorType', operatorType)
+          ..add('cardNo', cardNo))
         .toString();
   }
 }
@@ -130,6 +187,18 @@ class RequestInfoBuilder implements Builder<RequestInfo, RequestInfoBuilder> {
   String get version => _$this._version;
   set version(String version) => _$this._version = version;
 
+  String _operator;
+  String get operator => _$this._operator;
+  set operator(String operator) => _$this._operator = operator;
+
+  String _operatorType;
+  String get operatorType => _$this._operatorType;
+  set operatorType(String operatorType) => _$this._operatorType = operatorType;
+
+  String _cardNo;
+  String get cardNo => _$this._cardNo;
+  set cardNo(String cardNo) => _$this._cardNo = cardNo;
+
   RequestInfoBuilder();
 
   RequestInfoBuilder get _$this {
@@ -138,6 +207,9 @@ class RequestInfoBuilder implements Builder<RequestInfo, RequestInfoBuilder> {
       _requestType = $v.requestType;
       _termSerialNum = $v.termSerialNum;
       _version = $v.version;
+      _operator = $v.operator;
+      _operatorType = $v.operatorType;
+      _cardNo = $v.cardNo;
       _$v = null;
     }
     return this;
@@ -163,7 +235,10 @@ class RequestInfoBuilder implements Builder<RequestInfo, RequestInfoBuilder> {
             termSerialNum: BuiltValueNullFieldError.checkNotNull(
                 termSerialNum, 'RequestInfo', 'termSerialNum'),
             version: BuiltValueNullFieldError.checkNotNull(
-                version, 'RequestInfo', 'version'));
+                version, 'RequestInfo', 'version'),
+            operator: operator,
+            operatorType: operatorType,
+            cardNo: cardNo);
     replace(_$result);
     return _$result;
   }

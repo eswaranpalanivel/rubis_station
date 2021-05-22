@@ -30,11 +30,15 @@ class _$RespInfoSerializer implements StructuredSerializer<RespInfo> {
       'resp_desc',
       serializers.serialize(object.respDesc,
           specifiedType: const FullType(String)),
-      'switch_info',
-      serializers.serialize(object.switchInfo,
-          specifiedType: const FullType(SwitchInfo)),
     ];
-
+    Object value;
+    value = object.switchInfo;
+    if (value != null) {
+      result
+        ..add('switch_info')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(SwitchInfo)));
+    }
     return result;
   }
 
@@ -102,7 +106,6 @@ class _$RespInfo extends RespInfo {
     BuiltValueNullFieldError.checkNotNull(errDesc, 'RespInfo', 'errDesc');
     BuiltValueNullFieldError.checkNotNull(respCode, 'RespInfo', 'respCode');
     BuiltValueNullFieldError.checkNotNull(respDesc, 'RespInfo', 'respDesc');
-    BuiltValueNullFieldError.checkNotNull(switchInfo, 'RespInfo', 'switchInfo');
   }
 
   @override
@@ -179,7 +182,7 @@ class RespInfoBuilder implements Builder<RespInfo, RespInfoBuilder> {
       _errDesc = $v.errDesc;
       _respCode = $v.respCode;
       _respDesc = $v.respDesc;
-      _switchInfo = $v.switchInfo.toBuilder();
+      _switchInfo = $v.switchInfo?.toBuilder();
       _$v = null;
     }
     return this;
@@ -210,12 +213,12 @@ class RespInfoBuilder implements Builder<RespInfo, RespInfoBuilder> {
                   respCode, 'RespInfo', 'respCode'),
               respDesc: BuiltValueNullFieldError.checkNotNull(
                   respDesc, 'RespInfo', 'respDesc'),
-              switchInfo: switchInfo.build());
+              switchInfo: _switchInfo?.build());
     } catch (_) {
       String _$failedField;
       try {
         _$failedField = 'switchInfo';
-        switchInfo.build();
+        _switchInfo?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             'RespInfo', _$failedField, e.toString());

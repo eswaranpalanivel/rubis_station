@@ -22,6 +22,19 @@ abstract class RequestInfo implements Built<RequestInfo, RequestInfoBuilder> {
   String get termSerialNum;
   @BuiltValueField(wireName: 'version')
   String get version;
+
+  @BuiltValueField(wireName: 'Operator')
+  @nullable
+  String get operator;
+
+  @BuiltValueField(wireName: 'OperatorType')
+  @nullable
+  String get operatorType;
+
+  @BuiltValueField(wireName: 'CardNum')
+  @nullable
+  String get cardNo;
+
   String toJson() {
     return json.encode(serializers.serializeWith(RequestInfo.serializer, this));
   }

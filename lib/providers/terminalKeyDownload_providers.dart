@@ -26,6 +26,7 @@ class TerminalKeyDownload_ServiceProviders with ChangeNotifier {
     try{
       http.Response response = await http.post(_url, body: _reqInfo.toJson()).timeout(Duration(seconds: 5 ));
       _terminalKeyInfo = TerminalKeyInfo.fromJson(response.body);
+      print("${_terminalKeyInfo}");
       notifyListeners();
       return true;
     } on SocketException catch( e ){

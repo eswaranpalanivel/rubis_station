@@ -1,4 +1,4 @@
-library master_key_info;
+library valid_user_info;
 
 import 'dart:convert';
 
@@ -13,13 +13,14 @@ import 'package:rubis_station/model/store_info.dart';
 import 'package:rubis_station/model/switch_info.dart';
 import 'package:rubis_station/model/terminal_info.dart';
 
-part 'masterKey_info.g.dart';
+part 'validUser_info.g.dart';
 
-abstract class MasterKeyInfo
-    implements Built<MasterKeyInfo, MasterKeyInfoBuilder> {
-  MasterKeyInfo._();
+abstract class ValidUserInfo
+    implements Built<ValidUserInfo, ValidUserInfoBuilder> {
+  ValidUserInfo._();
 
-  factory MasterKeyInfo([updates(MasterKeyInfoBuilder b)]) = _$MasterKeyInfo;
+  factory ValidUserInfo([updates(ValidUserInfoBuilder b)]) = _$ValidUserInfo;
+
   @BuiltValueField(wireName: 'merchant_info')
   MerchantInfo get merchantInfo;
   @BuiltValueField(wireName: 'req_info')
@@ -32,14 +33,13 @@ abstract class MasterKeyInfo
   TerminalInfo get terminalInfo;
   String toJson() {
     return json
-        .encode(serializers.serializeWith(MasterKeyInfo.serializer, this));
+        .encode(serializers.serializeWith(ValidUserInfo.serializer, this));
   }
 
-  static MasterKeyInfo fromJson(String jsonString) {
+  static ValidUserInfo fromJson(String jsonString) {
     return serializers.deserializeWith(
-        MasterKeyInfo.serializer, json.decode(jsonString));
+        ValidUserInfo.serializer, json.decode(jsonString));
   }
 
-  static Serializer<MasterKeyInfo> get serializer => _$masterKeyInfoSerializer;
+  static Serializer<ValidUserInfo> get serializer => _$validUserInfoSerializer;
 }
-

@@ -24,6 +24,8 @@ abstract class RespInfo implements Built<RespInfo, RespInfoBuilder> {
   String get respCode;
   @BuiltValueField(wireName: 'resp_desc')
   String get respDesc;
+
+  @nullable
   @BuiltValueField(wireName: 'switch_info')
   SwitchInfo get switchInfo;
   String toJson() {

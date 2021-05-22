@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rubis_station/model/Colour.dart';
-import 'package:rubis_station/screens/UserSelection_Screen.dart';
+import 'package:rubis_station/screens/userSelection_Screen.dart';
 
 class UserSelection extends StatelessWidget {
   static const routeName = "/UserSelection";

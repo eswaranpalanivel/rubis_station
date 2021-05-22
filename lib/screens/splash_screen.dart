@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rubis_station/screens/LoginPage_Screen.dart';
+import 'package:rubis_station/screens/loginPage_Screen.dart';
 import 'package:rubis_station/widgets/backGround_widget.dart';
 import 'package:rubis_station/config/text_string.dart';
 import 'package:rubis_station/providers/masterKeyDownload_providers.dart';
@@ -48,9 +48,9 @@ class _SplashScreenState extends State<SplashScreen> {
     try {
       _masterkey_retval = await Provider.of<MasterKeyDownload_ServiceProviders>(context).MasterKeyDownload();
 
-      setState(() {
-        _loading = false;
-      });
+      // setState(() {
+      //   _loading = false;
+      // });
 
       if ( _masterkey_retval )
         {
@@ -58,9 +58,11 @@ class _SplashScreenState extends State<SplashScreen> {
             _terminalkey_retval =
             await Provider.of<TerminalKeyDownload_ServiceProviders>(context, listen: false )
                 .TerminalKeyInfoDownload();
-
+            setState(() {
+              _loading = false;
+            });
             if (_terminalkey_retval) {
-              Future.delayed(Duration(seconds: 3), () {
+              Future.delayed(Duration(seconds: 1), () {
                 Navigator.of(context).popAndPushNamed(LoginPage.routeName);
               }).catchError((e) {
                 print(e.message);
